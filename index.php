@@ -246,7 +246,7 @@ $query = "SELECT * from users";
 $result = mysqli_query($conn, $query);
 
 while ($rows = mysqli_fetch_assoc($result)) {
-    $id = $rows['id'];
+    $userid = $rows['id'];
     $name = $rows['name'];
     $sex = $rows['sex'];
     if($sex == "male"){
@@ -265,7 +265,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
 
 ?>
   <tr>
-    <td><?php echo $id;?></td>
+    <td><?php echo $userid;?></td>
     <td><?php echo $name;?></td>
     <td><?php echo $sex;?></td>
     <td><?php echo $status;?></td>
@@ -273,7 +273,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
     <td><?php echo $phone_number;?></td>
     <td><input type="checkbox"></td>
     <td><button title='View Image' style='width: 40px; padding: 5px; background: #ffb703; border: 1px solid #ffb703; border-radius: 4px; color: #333; cursor: hand;'><i class='fas fa-archive'></i></button>
-                <a href="user_profile.php?id=<?php echo $id; ?>"><button title='Profile' style='background: #537EC5; width: 40px; padding: 5px; background: #3f37c9; border: 1px solid #3f37c9; border-radius: 4px; color: #fff; cursor: hand;'><i class="fas fa-id-card"></i></button></a>
+                <a href="user_profile.php?id=<?php echo $userid; ?>"><button title='Profile' style='background: #537EC5; width: 40px; padding: 5px; background: #3f37c9; border: 1px solid #3f37c9; border-radius: 4px; color: #fff; cursor: hand;'><i class="fas fa-id-card"></i></button></a>
                 <a href="delete.php?id=<?php echo $id; ?>"><button title='Delete Id' style='background: red; width: 40px; padding: 5px; background: #e63946; border: 1px solid #e63946; border-radius: 4px; color: #fff; cursor: hand;'><i class='fas fa-trash'></i></button></a></td>
     <td><a href='download.php?id=<?php echo $id; ?>'><button title='Download Id' style='width: 40px; padding: 5px; background: green; border: 1px solid green; border-radius: 4px; color: #eee; cursor: hand;'><i class="fas fa-save"></i></button></a></td>
   </tr><?php } ?>
@@ -283,7 +283,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
 
 
 <div id="area_3" style="display: none; padding: 30px;">
-
+<a href="add.php"><button style="background: #a4133c; border: none; float: right; padding: 10px; margin-top: 5px; color: #fff">Add Admins</button></a><br><br><br>
 <table id="customers">
   <tr>
     <th>Id</th>
