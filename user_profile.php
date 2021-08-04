@@ -17,7 +17,6 @@ while ($rows = mysqli_fetch_assoc($result1)) {
 ?>
 
 <?php
-
 $query2 = "SELECT * from users where id = '$user_id'";
 $result2 = mysqli_query($conn, $query2);
 
@@ -155,6 +154,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
 </script>
 <?php 
         $reg = @$_POST['reg'];
+        if ($reg) {
         $name = strip_tags(@$_POST['name']);
         $surname = strip_tags(@$_POST['surname']);
         $sex = strip_tags(@$_POST['sex']);
@@ -184,15 +184,14 @@ while ($rows = mysqli_fetch_assoc($result2)) {
         $whatsapp_number = strip_tags(@$_POST['whatsapp_number']);
         $phone_number = strip_tags(@$_POST['phone_number']);
         $status = strip_tags(@$_POST['status']);
-        if ($reg) {
             $sql3 = "UPDATE `users` SET `name`='$name',`surname`='$surname',`sex`='$sex',`language`='$language',
             `caste`='$caste',`sub_caste`='$sub_caste',`gothram`='$gothram',`zodiac_sign`='$zodiac_sign',`star`='$star',
             `dob`='$dob',`pob`='$pob',`tob`='$tob',`city`='$city',`district`='$district',
             `state`='$state',`height`='$height',`color`='$color',`eating_habits`='$eating_habits',
-            `bad_habbits`='$bad_habbits',`education`='$education',`job`='$job',`job_location'$job_location',
+            `bad_habbits`='$bad_habbits',`education`='$education',`job`='$job',`job_location` = '$job_location',
             `nri`='$nri',`annual_income`='$annual_income',`parents_details`='$parents_details',`requirements`='$requirements',
             `whatsapp_number`='$whatsapp_number',`phone_number`='$phone_number', `status`='$status'
-             WHERE id= '$user_id'";
+            WHERE id= '$user_id'";
             $rt = mysqli_query($conn, $sql3);
 
             if ($rt) {
