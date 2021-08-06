@@ -2,14 +2,7 @@
 <?php
 $user_id = $_GET['id'];
 ?>
-<?php
-$query1 = "SELECT * from admin WHERE id = '$admin_id'";
-$result1 = mysqli_query($conn, $query1);
 
-while ($rows = mysqli_fetch_assoc($result1)) {
-    $admin_name = $rows['admin_name'];
-}
-?>
 
 <?php
 $query2 = "SELECT * from users where id = '$user_id'";
@@ -59,100 +52,12 @@ while ($rows = mysqli_fetch_assoc($result2)) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<div class="sidebar" id="sidebar_toggle" style="background: #a4133c;">
-    <br><br><br>
-        <p style="font-weight: 600; margin-left: 30px; font-size: 12px; color: #98c1d9;">Dashboard</p><br>
-        <a href="index.php"><button class="sidebar_link"><i class="fas fa-home" style="padding-right: 15px;"></i> Dashboard</button></a><br><br>
-        <button class="sidebar_link2" onclick="main3()"><i class="fas fa-users" style="padding-right: 15px;"></i> User Profile</button>
-</div>
-<div class="header" id="header_toggle">
-    <div style="padding: 10px;">
-        <button id="hide_btn" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888;" onclick="panel1()"><i class="fas fa-bars"></i></button>
-        <button id="show_btn" style="display: none; float: left; background: #fff; border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888;" onclick="panel2()"><i class="fas fa-bars"></i></button>
-        <a href='index.php'><button id="Home" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888; margin-left: 10px;"><i class="fas fa-home"></i></button></a>
-        <a href='logout.php'><button id="logout" style="float: right; background: #a4133c; border: 1px solid #a4133c; border-radius: 8px; padding: 10px; margin-top: 5px; color: #fff;" onclick="panel2()"><i class="fas fa-sign-out-alt"></i> Logout</button></a>
-        <button style="background: #fff; float: right; border: 0 none; padding: 2px; margin-top: 5px; color: #888; margin-right: 20px;">
-            <p style="float: right; font-size: 14px; font-weight: 600; margin-top: 5px; color:#001d3d;">Hello,  <?php echo $admin_name;?> <i class="fas fa-smile-wink" style="color: #e8c15f; font-size: 14px;"></i></p>
-            <img src='images/logo.png' width="25px" style="float: right; margin-right: 05px; ">
-        </button>
-        <button style="background: #fff; float: right; border: 0 none; padding: 2px; margin-top: 5px; color: #888; margin-right: 20px;">
-            <label id="seconds" style="float: right; font-size: 14px; font-weight: 600; margin-top: 5px; color:#001d3d;">00</label>
-            <f style="float: right; font-size: 14px; font-weight: 600; margin-top: 5px; color:#001d3d;">:</f><label id="minutes" style="float: right; font-size: 14px; font-weight: 600; margin-top: 5px; color:#001d3d;">00</label>
-            <f style="float: right; font-size: 14px; font-weight: 600; margin-top: 5px; color:#001d3d;">Time : &nbsp;</f>
-        </button>
-        <script>
-            var minutesLabel = document.getElementById("minutes");
-            var secondsLabel = document.getElementById("seconds");
-            var totalSeconds = 0;
-            setInterval(setTime, 1000);
-
-            function setTime() {
-                ++totalSeconds;
-                secondsLabel.innerHTML = pad(totalSeconds % 60);
-                minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-            }
-
-            function pad(val) {
-                var valString = val + "";
-                if (valString.length < 2) {
-                    return "0" + valString;
-                } else {
-                    return valString;
-                }
-            }
-        </script>
-    </div>
-</div>
-<style type="text/css">
-    .sidebar {
-        width: 20%;
-        height: 100%;
-        background: #001d3d;
-        position: fixed;
-    }
-
-    .header {
-        width: 80%;
-        background: #fff;
-        border-bottom: 1px solid #eee;
-        height: 65px;
-        position: absolute;
-        right: 0;
-    }
-
-    #body_area {
-        width: 80%;
-        background: #fff;
-        right: 0;
-        top: 70;
-        position: absolute;
-    }
-</style>
-<script>
-    function panel1() {
-        document.getElementById("sidebar_toggle").style.width = '0%';
-        document.getElementById("sidebar_toggle").style.display = 'none';
-        document.getElementById("header_toggle").style.width = '100%';
-        document.getElementById("body_area").style.width = '100%';
-        document.getElementById("show_btn").style.display = 'block';
-        document.getElementById("hide_btn").style.display = 'none';
-    }
-
-    function panel2() {
-        document.getElementById("sidebar_toggle").style.width = '20%';
-        document.getElementById("sidebar_toggle").style.display = 'block';
-        document.getElementById("header_toggle").style.width = '80%';
-        document.getElementById("body_area").style.width = '80%';
-        document.getElementById("show_btn").style.display = 'none';
-        document.getElementById("hide_btn").style.display = 'block';
-    }
-</script>
 <div id='body_area'>
 <div style="padding: 120px;">
     <div style="margin-right: auto; margin-left: auto; width: 950px; border: 2px solid #eee; border-radius: 8px;">
         <div style="padding: 40px;">
             <form action="user_profile.php?id=<?php echo $user_id; ?>" method="post">
-                <h1 style="font-size: 28px; font-weight: 600; color: #444; line-height: 60px;"><i class="fas fa-plus" style="font-size: 28px;"></i> Edit Profile</h1><br>
+                <h1 style="font-size: 28px; font-weight: 600; color: #444; line-height: 60px;"><i class="fas fa-plus" style="font-size: 28px;"></i> Profile</h1><br>
                 <center><img src='images/assign.svg' width="200"></center><br>
         <div class="form-row">
             <div class="form-group col-md-6">
