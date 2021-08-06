@@ -1,10 +1,5 @@
 <?php include_once("connection/db.php"); ?>
 <?php
-if (isset($_SESSION['admin_name'])) {
-} else {
-    echo "<meta http-equiv=\"refresh\" content=\"0; url=login.php\">";
-    exit();
-}
 $user_id = $_GET['id'];
 ?>
 <?php
