@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2021 at 11:16 AM
+-- Generation Time: Aug 06, 2021 at 01:35 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -41,7 +41,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `admin_name`, `email`, `admin_password`, `user`, `status`) VALUES
-(1, 'admin', 'admin@admin.com', 'admin', 'Administrator', 'Active');
+(1, 'admin', 'admin@admin.com', 'admin', 'Administrator', 'Active'),
+(2, 'zaidan', 'khanzaidan786@gmail.com', 'zaidan', 'Administrator', 'Active');
 
 -- --------------------------------------------------------
 
@@ -53,6 +54,7 @@ CREATE TABLE `users` (
   `id` int(255) NOT NULL,
   `name` text NOT NULL,
   `surname` text NOT NULL,
+  `email` text NOT NULL,
   `sex` text NOT NULL,
   `language` text NOT NULL,
   `caste` text NOT NULL,
@@ -60,9 +62,9 @@ CREATE TABLE `users` (
   `gothram` text NOT NULL,
   `zodiac_sign` text NOT NULL,
   `star` text NOT NULL,
-  `dob` date NOT NULL,
+  `dob` text NOT NULL,
   `pob` text NOT NULL,
-  `tob` datetime NOT NULL,
+  `tob` text NOT NULL,
   `city` text NOT NULL,
   `district` text NOT NULL,
   `state` text NOT NULL,
@@ -87,10 +89,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `sex`, `language`, `caste`, `sub_caste`, `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`, `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`, `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`) VALUES
-(1, 'zaidan', 'khan', 'male', 'English', 'pata nahi', 'hai hi nahi', 'nahi dunga', 'its complicated', 'i am', '2004-07-22', 'home', '2004-07-22 11:45:56', 'jaipur', '', 'rajasthan', 'bhut bada hai', 'krdo', 'sexy af', 'hai hi nahi', 'bhut pada likha', 'krta hi nai', 'jb krta nahi to kyu bataun', 'nahi hun abhi tk to', 'job nahi hai', 'nahi bataunga', 'bhut hai ', '7976156986', '7976156986', '', '0'),
-(2, 'Ayet', 'Noor', 'female', 'Bihari', 'pata nahi', 'hai hi nahi', 'nahi degi', 'Sagitarious', 'i have one', '2000-12-13', 'fauziya hospital', '2000-12-13 11:45:56', 'mumbai', '', 'Maharashtra', 'choti si', 'nahi bata rahi', 'not sexy but cute enought', 'hai hi nahi', 'mt pucho', 'krta hi nai', 'jb krta nahi to kyu bataun', 'nahi hun abhi tk to', 'job nahi hai', 'nahi bataunga', 'bhut hai ', '8890705905', '8890705905', '', '0'),
-(3, 'rohan', 'khan', 'male', 'English', 'pata nahi', 'hai hi nahi', 'nahi dunga', 'its complicated', 'i am', '2000-08-28', 'home', '2004-07-22 11:45:56', 'jaipur', '', 'rajasthan', 'bhut bada hai', 'krdo', 'sexy af', 'hai hi nahi', 'bhut pada likha', 'krta hi nai', 'jb krta nahi to kyu bataun', 'nahi hun abhi tk to', 'job nahi hai', 'nahi bataunga', 'bhut hai ', '7976156986', '7976156986', '', '0');
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`, `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`, `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`) VALUES
+(1, 'zaidan', 'khan', 'zaidan@zaidan.com', 'male', 'English', 'pata nahi', 'hai hi nahi', 'nahi dunga', 'its complicated', 'i am', '2004-07-22', 'home', '2004-07-22 11:45:56', 'jaipur', '', 'rajasthan', 'bhut bada hai', 'krdo', 'sexy af', 'hai hi nahi', 'bhut pada likha', 'krta hi nai', 'jb krta nahi to kyu bataun', 'nahi hun abhi tk to', 'job nahi hai', 'nahi bataunga', 'bhut hai ', '7976156986', '7976156986', '', '0'),
+(2, 'Ayet', 'Noor', '', 'female', 'Bihari', 'pata nahi', 'hai hi nahi', 'nahi degi', 'Sagitarious', 'i have one', '2000-12-13', 'fauziya hospital', '2000-12-13 11:45:56', 'mumbai', '', 'Maharashtra', 'choti si', 'nahi bata rahi', 'not sexy but cute enought', 'hai hi nahi', 'mt pucho', 'krta hi nai', 'jb krta nahi to kyu bataun', 'nahi hun abhi tk to', 'job nahi hai', 'nahi bataunga', 'bhut hai ', '8890705905', '8890705905', '', '0'),
+(3, 'rohan', 'khan', '', 'male', 'English', 'pata nahi', 'hai hi nahi', 'nahi dunga', 'its complicated', 'i am', '2000-08-28', 'home', '2004-07-22 11:45:56', 'jaipur', '', 'rajasthan', 'bhut bada hai', 'krdo', 'sexy af', 'hai hi nahi', 'bhut pada likha', 'krta hi nai', 'jb krta nahi to kyu bataun', 'nahi hun abhi tk to', 'job nahi hai', 'nahi bataunga', 'bhut hai ', '7976156986', '7976156986', '', '0');
 
 --
 -- Indexes for dumped tables
@@ -116,7 +118,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -12,6 +12,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
     $id = $rows['id'];
     $name = $rows['name'];
     $surname = $rows['surname'];
+    $email = $rows['email'];
     $sex = $rows['sex'];
     $language = $rows['language'];
     $caste = $rows['caste'];
@@ -118,6 +119,10 @@ while ($rows = mysqli_fetch_assoc($result2)) {
             <div class="form-group col-md-6">
             <label for="inputEmail4">Surname</label>
             <input type="text" class="form-control" value="<?php echo $surname ;?>"  name="surname" id="inputEmail4" disabled placeholder="Surname">
+            </div>
+            <div class="form-group col-md-6">
+            <label for="inputEmail4">E-mail</label>
+            <input type="text" class="form-control" value="<?php echo $email ;?>"  name="surname" id="inputEmail4" disabled placeholder="Surname">
             </div>
             <div class="form-group col-md-6">
             <label for="inputEmail4">Gender</label>

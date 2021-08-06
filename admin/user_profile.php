@@ -24,6 +24,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
     $id = $rows['id'];
     $name = $rows['name'];
     $surname = $rows['surname'];
+    $email = $rows['email'];
     $sex = $rows['sex'];
     $language = $rows['language'];
     $caste = $rows['caste'];
@@ -157,6 +158,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
         if ($reg) {
         $name = strip_tags(@$_POST['name']);
         $surname = strip_tags(@$_POST['surname']);
+        $email = strip_tags(@$_POST['email']);
         $sex = strip_tags(@$_POST['sex']);
         $language = strip_tags(@$_POST['language']);
         $caste = strip_tags(@$_POST['caste']);
@@ -184,7 +186,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
         $whatsapp_number = strip_tags(@$_POST['whatsapp_number']);
         $phone_number = strip_tags(@$_POST['phone_number']);
         $status = strip_tags(@$_POST['status']);
-            $sql3 = "UPDATE `users` SET `name`='$name',`surname`='$surname',`sex`='$sex',`language`='$language',
+            $sql3 = "UPDATE `users` SET `name`='$name',`surname`='$surname', `email`='$email', `sex`='$sex',`language`='$language',
             `caste`='$caste',`sub_caste`='$sub_caste',`gothram`='$gothram',`zodiac_sign`='$zodiac_sign',`star`='$star',
             `dob`='$dob',`pob`='$pob',`tob`='$tob',`city`='$city',`district`='$district',
             `state`='$state',`height`='$height',`color`='$color',`eating_habits`='$eating_habits',
@@ -217,6 +219,10 @@ while ($rows = mysqli_fetch_assoc($result2)) {
             <div class="form-group col-md-6">
             <label for="inputEmail4">Surname</label>
             <input type="text" class="form-control" value="<?php echo $surname ;?>"  name="surname" id="inputEmail4" placeholder="Surname">
+            </div>
+            <div class="form-group col-md-6">
+            <label for="inputEmail4">E-mail</label>
+            <input type="text" class="form-control" value="<?php echo $email ;?>"  name="email" id="inputEmail4" placeholder="Surname">
             </div>
             <div class="form-group col-md-6">
             <label for="inputEmail4">Gender</label>
