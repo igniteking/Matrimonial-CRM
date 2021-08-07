@@ -237,7 +237,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
     <th>Marital Status</th>
     <th>Date Of Birth</th>
     <th>Primary Number</th>
-    <th>Marked As Engaged</th>
     <th>Action(s)</th>
     <th>Download</th>
   </tr>
@@ -271,7 +270,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
     <td><?php echo $status;?></td>
     <td><?php echo $dob;?></td>
     <td><?php echo $phone_number;?></td>
-    <td><input type="checkbox"></td>
     <td><button title='View Image' style='width: 40px; padding: 5px; background: #ffb703; border: 1px solid #ffb703; border-radius: 4px; color: #333; cursor: hand;'><i class='fas fa-archive'></i></button>
                 <a href="user_profile.php?id=<?php echo $userid; ?>"><button title='Profile' style='background: #537EC5; width: 40px; padding: 5px; background: #3f37c9; border: 1px solid #3f37c9; border-radius: 4px; color: #fff; cursor: hand;'><i class="fas fa-id-card"></i></button></a>
                 <a href="delete.php?id=<?php echo $id; ?>"><button title='Delete Id' style='background: red; width: 40px; padding: 5px; background: #e63946; border: 1px solid #e63946; border-radius: 4px; color: #fff; cursor: hand;'><i class='fas fa-trash'></i></button></a></td>

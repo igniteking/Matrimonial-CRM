@@ -152,42 +152,38 @@
     $dbPassword = "";
     $dbName = "matrimonial";
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
-    session_start();
-    if (isset($_SESSION['admin_name'])) {
-        $admin = $_SESSION["admin_name"];
-        $admin_id = $_SESSION["id"];
-    } else {
-        $admin = "No User";
-    }
 
-
-    $register = $_POST['submit'];
-    $gender = strip_tags(@$_POST['gender']);
-    $marital_status = strip_tags(@$_POST['marital_status']);
-    $first_name = strip_tags(@$_POST['first_name']);
-    $last_name = strip_tags(@$_POST['last_name']);
-    $mother_tongue = strip_tags(@$_POST['mother_tongue']);
-    $email_address = strip_tags(@$_POST['email_address']);
+    $register = @$_POST['submit'];
+    $name = strip_tags(@$_POST['first_name']);
+    $surname = strip_tags(@$_POST['last_name']);
+    $email = strip_tags(@$_POST['email_address']);
+    $sex = strip_tags(@$_POST['gender']);
+    $language = strip_tags(@$_POST['mother_tongue']);
     $caste = strip_tags(@$_POST['caste']);
     $sub_caste = strip_tags(@$_POST['sub_caste']);
-    $astrological_sign = strip_tags(@$_POST['astrological_sign']);
-    $zodiac_star = strip_tags(@$_POST['zodiac_star']);
-    $date_of_birth = strip_tags(@$_POST['date_of_birth']);
-    $place_of_birth = strip_tags(@$_POST['place_of_birth']);
-    $time_of_birth = strip_tags(@$_POST['time_of_birth']);
+    $gothram = strip_tags(@$_POST['gothram']);
+    $zodiac_sign = strip_tags(@$_POST['astrological_sign']);
+    $star = strip_tags(@$_POST['zodiac_star']);
+    $dob = strip_tags(@$_POST['date_of_birth']);
+    $pob = strip_tags(@$_POST['place_of_birth']);
+    $tob = strip_tags(@$_POST['time_of_birth']);
     $city = strip_tags(@$_POST['city']);
     $district = strip_tags(@$_POST['district']);
-    $groom_birde_height = strip_tags(@$_POST['groom_birde_height']);
-    $skin_color = strip_tags(@$_POST['skin_color']);
+    $state = strip_tags(@$_POST['state']);
+    $height = strip_tags(@$_POST['groom_birde_height']);
+    $color = strip_tags(@$_POST['skin_color']);
     $eating_habits = strip_tags(@$_POST['eating_habits']);
-    $smoking_drinking_details = strip_tags(@$_POST['smoking_drinking_details']);
-    $qulification = strip_tags(@$_POST['qulification']);
-    $job_business = strip_tags(@$_POST['job_current_location']);
-    $stnri_visa_detailsate = strip_tags(@$_POST['annual_income']);
+    $bad_habbits = strip_tags(@$_POST['smoking_drinking_details']);
+    $education = strip_tags(@$_POST['qulification']);
+    $job = strip_tags(@$_POST['job']);
+    $job_location = strip_tags(@$_POST['job_current_location']);
+    $nri = strip_tags(@$_POST['nri']);
+    $annual_income = strip_tags(@$_POST['annual_income']);
+    $parents_details = strip_tags(@$_POST['parents_details']);
     $requirements = strip_tags(@$_POST['requirements']);
-    $primary_phone_watsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
-    $alternative_phone_number = strip_tags(@$_POST['alternative_phone_number']);
-
+    $whatsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
+    $phone_number = strip_tags(@$_POST['alternative_phone_number']);
+    $status = strip_tags(@$_POST['marital_status']);
     if ($register) {
         if (((@$_FILES["img"]["type"] == "image/jpeg") || (@$_FILES["img"]["type"] == "image/png") || (@$_FILES["img"]["type"] == "image/gif")) && (@$_FILES["img"]["size"] < 10048576)) {
             $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -198,7 +194,15 @@
             } else {
                 move_uploaded_file(@$_FILES['img']['tmp_name'], "userdata/$rand_dir_name/" . $_FILES['img']['name']);
                 $cover_pic_name = "$rand_dir_name/" . @$_FILES['img']['name'];
-                $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`, `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`, `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`) VALUES ('$first_name','$last_name','$email_address','$gender','$mother_tongue','$caste','$sub_caste','','','','[value-11]','[value-12]','[value-13]','[value-14]','[value-15]','[value-16]','[value-17]','[value-18]','[value-19]','[value-20]','[value-21]','[value-22]','[value-23]','[value-24]','[value-25]','[value-26]','[value-27]','[value-28]','[value-29]','[value-30]','[value-31]','[value-32]')";
+                $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
+                `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`,
+                 `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`,
+                  `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`)
+                   VALUES 
+                   (Null, '$name', '$surname', '$email', '$sex', '$language', '$caste', '$sub_caste', 
+                '$gothram', '$zodiac_sign', '$star', '$dob', '$pob', '$tob', '$city', '$district', '$state', '$height', '$color',
+                 '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
+                  '$requirements', '$whatsapp_number', '$phone_number', '$cover_pic_name', '$status')";
                 $sql = mysqli_query($conn, $query);
                 echo "Done!";
             };
