@@ -185,16 +185,15 @@
     $phone_number = strip_tags(@$_POST['alternative_phone_number']);
     $status = strip_tags(@$_POST['marital_status']);
     if ($register) {
-        if (((@$_FILES["img"]["type"] == "image/jpeg") || (@$_FILES["img"]["type"] == "image/png") || (@$_FILES["img"]["type"] == "image/gif")) && (@$_FILES["img"]["size"] < 10048576)) {
-            $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            $rand_dir_name = substr(str_shuffle($chars), 0, 15);
-            mkdir("userdata/$rand_dir_name");
-            if (file_exists("userdata/$rand_dir_name/" . @$_FILES['img']['name'])) {
-                $error = "Image Already Exists!";
-            } else {
-                move_uploaded_file(@$_FILES['img']['tmp_name'], "userdata/$rand_dir_name/" . $_FILES['img']['name']);
-                $cover_pic_name = "$rand_dir_name/" . @$_FILES['img']['name'];
-                $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        $rand_dir_name = substr(str_shuffle($chars), 0, 15);
+        mkdir("userdata/$rand_dir_name");
+        if (file_exists("userdata/$rand_dir_name/" . @$_FILES['img']['name'])) {
+            $error = "Image Already Exists!";
+        } else {
+            move_uploaded_file(@$_FILES['img']['tmp_name'], "userdata/$rand_dir_name/" . $_FILES['img']['name']);
+            $cover_pic_name = "$rand_dir_name/" . @$_FILES['img']['name'];
+            $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
                 `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`,
                  `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`,
                   `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`)
@@ -203,9 +202,8 @@
                 '$gothram', '$zodiac_sign', '$star', '$dob', '$pob', '$tob', '$city', '$district', '$state', '$height', '$color',
                  '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
                   '$requirements', '$whatsapp_number', '$phone_number', '$cover_pic_name', '$status')";
-                $sql = mysqli_query($conn, $query);
-                echo "Done!";
-            };
+            $sql = mysqli_query($conn, $query);
+            echo "Done!";
         };
     };
     ?>
@@ -297,7 +295,7 @@
                           <div class="col-xs-12 col-md-12" style="margin-top: 15px;">
 
                             <label for="photo">Select Photo</label>
-                            <input type="file" class="text-center  file-upload" name="photo" id="imgInp" required>
+                            <input type="file" class="text-center  file-upload" name="img" id="imgInp" required>
                             <small style="color:#03F;">Click On Pencil ✏️ Icon To Crop And Adjust Your Photo for better PROFILE VIEW</small>
                           </div>
 
