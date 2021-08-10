@@ -305,6 +305,7 @@
                                     <small style="color:#03F">Click On Pencil Icon To Crop And Adjust Your Photo for better PROFILE VIEW</small><br><br>
                                     <label for="photo">Profile Image</label>
                                     <input type="file" name="img" required>
+                                    
                                 </div>
                                 <!--  <label for="input-file-now"> </label>-->
                             </div>
