@@ -145,73 +145,82 @@
         </div>
     </div>
     <br><br>
-    <?php
-
-    $dbServername = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "matrimonial";
-    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
-
-    $register = @$_POST['submit'];
-    $name = strip_tags(@$_POST['first_name']);
-    $surname = strip_tags(@$_POST['last_name']);
-    $email = strip_tags(@$_POST['email_address']);
-    $sex = strip_tags(@$_POST['gender']);
-    $language = strip_tags(@$_POST['mother_tongue']);
-    $caste = strip_tags(@$_POST['caste']);
-    $sub_caste = strip_tags(@$_POST['sub_caste']);
-    $gothram = strip_tags(@$_POST['gothram']);
-    $zodiac_sign = strip_tags(@$_POST['astrological_sign']);
-    $star = strip_tags(@$_POST['zodiac_star']);
-    $dob = strip_tags(@$_POST['date_of_birth']);
-    $pob = strip_tags(@$_POST['place_of_birth']);
-    $tob = strip_tags(@$_POST['time_of_birth']);
-    $city = strip_tags(@$_POST['city']);
-    $district = strip_tags(@$_POST['district']);
-    $state = strip_tags(@$_POST['state']);
-    $height = strip_tags(@$_POST['groom_birde_height']);
-    $color = strip_tags(@$_POST['skin_color']);
-    $eating_habits = strip_tags(@$_POST['eating_habits']);
-    $bad_habbits = strip_tags(@$_POST['smoking_drinking_details']);
-    $education = strip_tags(@$_POST['qulification']);
-    $job = strip_tags(@$_POST['job']);
-    $job_location = strip_tags(@$_POST['job_current_location']);
-    $nri = strip_tags(@$_POST['nri']);
-    $annual_income = strip_tags(@$_POST['annual_income']);
-    $parents_details = strip_tags(@$_POST['parents_details']);
-    $requirements = strip_tags(@$_POST['requirements']);
-    $whatsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
-    $phone_number = strip_tags(@$_POST['alternative_phone_number']);
-    $status = strip_tags(@$_POST['marital_status']);
-    if ($register) {
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        $rand_dir_name = substr(str_shuffle($chars), 0, 15);
-        mkdir("userdata/$rand_dir_name");
-        if (file_exists("userdata/$rand_dir_name/" . @$_FILES['img']['name'])) {
-            $error = "Image Already Exists!";
-        } else {
-            move_uploaded_file(@$_FILES['img']['tmp_name'], "userdata/$rand_dir_name/" . $_FILES['img']['name']);
-            $cover_pic_name = "$rand_dir_name/" . @$_FILES['img']['name'];
-            $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
-                `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`,
-                 `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`,
-                  `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`)
-                   VALUES 
-                   (Null, '$name', '$surname', '$email', '$sex', '$language', '$caste', '$sub_caste', 
-                '$gothram', '$zodiac_sign', '$star', '$dob', '$pob', '$tob', '$city', '$district', '$state', '$height', '$color',
-                 '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
-                  '$requirements', '$whatsapp_number', '$phone_number', '$cover_pic_name', '$status')";
-            $sql = mysqli_query($conn, $query);
-            echo "Done!";
-        };
-    };
-    ?>
     <form action="index.php" method="POST" enctype="multipart/form-data">
         <div id='wrapper'>
             <div id='cottage_div_divider'>
                 <div class="col-sm-12">
                     <div class="panel panel-default" style="background-color: rgb(244, 247, 248);">
+                        <?php
+
+                        $dbServername = "localhost";
+                        $dbUsername = "root";
+                        $dbPassword = "";
+                        $dbName = "matrimonial";
+                        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
+
+                        $success = "";
+                        $register = @$_POST['submit'];
+                        $name = strip_tags(@$_POST['first_name']);
+                        $surname = strip_tags(@$_POST['last_name']);
+                        $email = strip_tags(@$_POST['email_address']);
+                        $sex = strip_tags(@$_POST['gender']);
+                        $language = strip_tags(@$_POST['mother_tongue']);
+                        $caste = strip_tags(@$_POST['caste']);
+                        $sub_caste = strip_tags(@$_POST['sub_caste']);
+                        $gothram = strip_tags(@$_POST['gothram']);
+                        $zodiac_sign = strip_tags(@$_POST['astrological_sign']);
+                        $star = strip_tags(@$_POST['zodiac_star']);
+                        $dob = strip_tags(@$_POST['date_of_birth']);
+                        $pob = strip_tags(@$_POST['place_of_birth']);
+                        $tob = strip_tags(@$_POST['time_of_birth']);
+                        $city = strip_tags(@$_POST['city']);
+                        $district = strip_tags(@$_POST['district']);
+                        $state = strip_tags(@$_POST['state']);
+                        $height = strip_tags(@$_POST['groom_birde_height']);
+                        $color = strip_tags(@$_POST['skin_color']);
+                        $eating_habits = strip_tags(@$_POST['eating_habits']);
+                        $bad_habbits = strip_tags(@$_POST['smoking_drinking_details']);
+                        $education = strip_tags(@$_POST['qulification']);
+                        $job = strip_tags(@$_POST['job_business']);
+                        $job_location = strip_tags(@$_POST['job_current_location']);
+                        $nri = strip_tags(@$_POST['nri']);
+                        $annual_income = strip_tags(@$_POST['annual_income']);
+                        $parents_details = strip_tags(@$_POST['parents_details']);
+                        $requirements = strip_tags(@$_POST['requirements']);
+                        $whatsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
+                        $phone_number = strip_tags(@$_POST['alternative_phone_number']);
+                        $status = strip_tags(@$_POST['marital_status']);
+                        if ($register) {
+                            $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                            $rand_dir_name = substr(str_shuffle($chars), 0, 15);
+                            mkdir("userdata/$rand_dir_name");
+                            if (file_exists("userdata/$rand_dir_name/" . @$_FILES['img']['name'])) {
+                                $error = "Image Already Exists!";
+                            } else {
+                                move_uploaded_file(@$_FILES['img']['tmp_name'], "userdata/$rand_dir_name/" . $_FILES['img']['name']);
+                                $cover_pic_name = "$rand_dir_name/" . @$_FILES['img']['name'];
+                                $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
+            `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`,
+             `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`,
+              `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`)
+               VALUES 
+               (Null, '$name', '$surname', '$email', '$sex', '$language', '$caste', '$sub_caste', 
+            '$gothram', '$zodiac_sign', '$star', '$dob', '$pob', '$tob', '$city', '$district', '$state', '$height', '$color',
+             '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
+              '$requirements', '$whatsapp_number', '$phone_number', '$cover_pic_name', '$status')";
+                                $sql = mysqli_query($conn, $query);
+                                $final_picture = "userdata/" . $cover_pic_name;
+                                exit('<div class="panel-heading">Confirm</div>
+        <div class="panel-body">
+            <div class="form-group">
+                <div class="col-xs-6 col-md-6">
+                <center><object data="certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $final_picture . '" width="900" height="900"></object></center>
+                </div>
+                </div>
+                </div>');
+                            };
+                        };
+                        ?>
                         <div class="panel-heading">Bride/Groom Details (మీ వివరాలు)</div>
                         <div class="panel-body">
                             <div class="form-group">
@@ -291,28 +300,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                          <div class="col-xs-12 col-md-12" style="margin-top: 15px;">
-
-                            <label for="photo">Select Photo</label>
-                            <input type="file" class="text-center  file-upload" name="img" id="imgInp" required>
-                            <small style="color:#03F;">Click On Pencil ✏️ Icon To Crop And Adjust Your Photo for better PROFILE VIEW</small>
-                          </div>
-
-                        </div> -->
-                            <div class="form-group p-20">
-                                <div class="col-xs-12 col-md-12" style="margin-top: 15px;margin-bottom:35px">
+                            <div class="form-group">
+                                <div class="col-xs-24 col-md-12" style="margin-top: 15px;margin-bottom:35px">
+                                    <small style="color:#03F">Click On Pencil Icon To Crop And Adjust Your Photo for better PROFILE VIEW</small><br><br>
                                     <label for="photo">Profile Image</label>
-                                    <div class="slim" data-ratio="9,16" data-min-size="480,720" data-label="Drop your Profile image here and image size must be <br> 480 X 720" data-force-size="480,720" data-force-min-size="false" data-size="480,720">
-
-                                        <input name="img" type="file" data-default-file="" id="input-file-now" class="" required />
-                                    </div>
+                                    <input type="file" name="img" required>
                                 </div>
                                 <!--  <label for="input-file-now"> </label>-->
-                                <small style="color:#03F">Click On Pencil Icon To Crop And Adjust Your Photo for better PROFILE VIEW</small>
-
-                                <code>
-                                </code>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-12 col-md-6" style="margin-top: 15px;">
@@ -485,42 +479,42 @@
                                     <label for="groom_birde_height">Height (ఎత్తు)</label>
                                     <select class="form-control" name="groom_birde_height" id="groom_birde_height" required>
                                         <option value="">Select HEIGHT</option>
-                                        <option value='83'> 6' 11" </option>
-                                        <option value='82'> 6' 10" </option>
-                                        <option value='81'> 6' 9" </option>
-                                        <option value='80'> 6' 8" </option>
-                                        <option value='79'> 6' 7" </option>
-                                        <option value='78'> 6' 6" </option>
-                                        <option value='77'> 6' 5" </option>
-                                        <option value='76'> 6' 4" </option>
-                                        <option value='75'> 6' 3" </option>
-                                        <option value='74'> 6' 2" </option>
-                                        <option value='73'> 6' 1" </option>
-                                        <option value='72'> 6' 0" </option>
-                                        <option value='71'> 5' 11" </option>
-                                        <option value='70'> 5' 10" </option>
-                                        <option value='69'> 5' 9" </option>
-                                        <option value='68'> 5' 8" </option>
-                                        <option value='67'> 5' 7" </option>
-                                        <option value='66'> 5' 6" </option>
-                                        <option value='65'> 5' 5" </option>
-                                        <option value='64'> 5' 4" </option>
-                                        <option value='63'> 5' 3" </option>
-                                        <option value='62'> 5' 2" </option>
-                                        <option value='61'> 5' 1" </option>
-                                        <option value='60'> 5' 0" </option>
-                                        <option value='59'> 4' 11" </option>
-                                        <option value='58'> 4' 10" </option>
-                                        <option value='57'> 4' 9" </option>
-                                        <option value='56'> 4' 8" </option>
-                                        <option value='55'> 4' 7" </option>
-                                        <option value='54'> 4' 6" </option>
-                                        <option value='53'> 4' 5" </option>
-                                        <option value='52'> 4' 4" </option>
-                                        <option value='51'> 4' 3" </option>
-                                        <option value='50'> 4' 2" </option>
-                                        <option value='49'> 4' 1" </option>
-                                        <option value='48'> 4' 0" </option>
+                                        <option value="6' 11"> 6' 11" </option>
+                                        <option value="6' 10"> 6' 10" </option>
+                                        <option value="6' 9"> 6' 9" </option>
+                                        <option value="6' 8"> 6' 8" </option>
+                                        <option value="6' 7"> 6' 7" </option>
+                                        <option value="6' 6"> 6' 6" </option>
+                                        <option value="6' 5"> 6' 5" </option>
+                                        <option value="6' 4"> 6' 4" </option>
+                                        <option value="6' 3"> 6' 3" </option>
+                                        <option value="6' 2"> 6' 2" </option>
+                                        <option value="6' 1"> 6' 1" </option>
+                                        <option value="6' 0"> 6' 0" </option>
+                                        <option value="5' 11"> 5' 11" </option>
+                                        <option value="5' 10"> 5' 10" </option>
+                                        <option value="5' 9"> 5' 9" </option>
+                                        <option value="5' 8"> 5' 8" </option>
+                                        <option value="5' 7"> 5' 7" </option>
+                                        <option value="5' 6"> 5' 6" </option>
+                                        <option value="5' 5"> 5' 5" </option>
+                                        <option value="5' 4"> 5' 4" </option>
+                                        <option value="5' 3"> 5' 3" </option>
+                                        <option value="5' 2"> 5' 2" </option>
+                                        <option value="5' 1"> 5' 1" </option>
+                                        <option value="5' 0"> 4' 0" </option>
+                                        <option value="4' 11"> 4' 11" </option>
+                                        <option value="4' 10"> 4' 10" </option>
+                                        <option value="4' 9"> 4' 9" </option>
+                                        <option value="4' 8"> 4' 8" </option>
+                                        <option value="4' 7"> 4' 7" </option>
+                                        <option value="4' 6"> 4' 6" </option>
+                                        <option value="4' 5"> 4' 5" </option>
+                                        <option value="4' 4"> 4' 4" </option>
+                                        <option value="4' 3"> 4' 3" </option>
+                                        <option value="4' 2"> 4' 2" </option>
+                                        <option value="4' 1"> 4' 1" </option>
+                                        <option value="4' 0"> 4' 0" </option>
                                     </select>
                                 </div>
                             </div>
