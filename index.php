@@ -197,13 +197,12 @@
              '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
               '$requirements', '$whatsapp_number', '$phone_number', '$picture', '$status')";
                         $sql = mysqli_query($conn, $query);
-                        $final_picture = "userdata/" . $cover_pic_name;
                         exit('<div class="panel-heading">Confirm</div>
         <div class="panel-body">
             <div class="form-group">
                 <div class="col-xs-6 col-md-12">
                 <center><object data="certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $picture . '" width="900" height="900"></object></center>
-                </div>
+                </div>'.$picture.'
                 </div>
                 </div>');
                     };

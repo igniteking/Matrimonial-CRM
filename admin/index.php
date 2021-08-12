@@ -193,9 +193,49 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <p style="font-weight: 600; font-size: 14px; color: #fff;"><?php echo $sims_rowcount; ?> Members</p>
                 </div>
             </div>
-        </div>
-    </div>
+            <?php 
+            $query = "SELECT * FROM `search_name` WHERE 1";
+            $result = mysqli_query($conn, $query);
+            
+            while ($rows = mysqli_fetch_assoc($result)) {
+                $id = $rows['id'];
+                $search_name_first = $rows['search_name_first'];
+            }
+            ?>
 
+            <form method="post" action="index.php" style="display: inline;">
+            <input type="submit" name="rename" value="📝 Rename" style="border: 2px solid #2b2d42; font-size: 20px; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; color: #fff; box-shadow: 1px 1px 8px #888; width: 300px; height: 90px; border-radius: 4px;">
+            </form>
+            <?php
+                $rename_btn = @$_POST['rename'];
+                if($rename_btn){
+                $str = "abcdefghijklmnopqrstuvwxyz1234567890";
+                $str = str_shuffle($str);
+                $str = substr($str, 0, 8);
+
+
+                $query = "SELECT * FROM `search_name` WHERE 1";
+                $result = mysqli_query($conn, $query);
+
+                while ($rows = mysqli_fetch_assoc($result)) {
+                $id = $rows['id'];
+                $search_name_first = $rows['search_name_first'];
+                }
+
+                $query2 = "UPDATE `search_name` SET `search_name_first`='$str.php' WHERE 1";
+                $result2 = mysqli_query($conn, $query2);
+
+                rename("../$search_name_first","../$str.php");
+                echo "<meta http-equiv=\"refresh\" content=\"0; url=login.php\">";
+            }
+            ?>
+            <a href="../<?php echo $search_name_first?>"><div style="border: 2px solid #2b2d42; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; box-shadow: 1px 1px 8px #888; width: 620px; height: 90px; border-radius: 4px;">
+                <div style="padding: 20px">
+                    <p style="font-weight: 600; font-size: 18px; color: #eee; padding: 10px;"><?php echo $search_name_first?></p>
+                </div>
+            </div></a>
+    </div>
+</div>
 
 
 

@@ -210,7 +210,12 @@ while ($rows = mysqli_fetch_assoc($result2)) {
         <div style="padding: 40px;">
             <form action="user_profile.php?id=<?php echo $user_id; ?>" method="post">
                 <h1 style="font-size: 28px; font-weight: 600; color: #444; line-height: 60px;"><i class="fas fa-plus" style="font-size: 28px;"></i> Edit Profile</h1><br>
-                <center><img src='images/assign.svg' width="200"></center><br>
+                <?php
+                    $check_pic = mysqli_query($conn, "SELECT profile_pic from users WHERE id = '$user_id'");
+                    $get_pic_row = mysqli_fetch_assoc($check_pic);
+                    $profile_pic_db = $get_pic_row['profile_pic'];
+                    ?>
+                <center><img src='../<?php echo $profile_pic_db;?>' width="400"></center><br>
         <div class="form-row">
             <div class="form-group col-md-6">
             <label for="inputEmail4">Name</label>
