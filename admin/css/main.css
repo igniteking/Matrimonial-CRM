@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600;400;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;900&display=swap");
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 13.5px;
+}
+
+.seprator {
+  float: left;
+  background: #ffffff;
+  width: 40%;
+  height: 100%;
+}
+.seprator_2 {
+  float: right;
+  background: url("../images/image.jpg");
+  background-size: cover;
+  width: 60%;
+  height: 100%;
+}
+.input_styler {
+  width: 100%;
+  font-weight: 300;
+  font-size: 16px;
+  padding: 15px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  margin-top: 10px;
+  outline: none;
+}
+.input_styler2 {
+  width: 100%;
+  font-weight: 300;
+  font-size: 12px;
+  padding: 13px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  margin-top: 10px;
+  outline: none;
+}
+.input_styler227 {
+  width: 50%;
+  font-weight: 300;
+  float: right;
+  font-size: 12px;
+  padding: 13px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  margin-top: 10px;
+  outline: none;
+}
+.submit_styler {
+  padding: 10px;
+  width: 100%;
+  background: #4361ee;
+  color: #fff;
+  border: 2px solid #4361ee;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.submit_styler:hover {
+  padding: 10px;
+  width: 100%;
+  background: #3a0ca3;
+  color: #fff;
+  border: 2px solid #3a0ca3;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.sidebar_link {
+  width: 100%;
+  color: #fff;
+  font-size: 13.5px;
+  background: #a4133c;
+  transition: background 2s;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid #a4133c;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 30px;
+}
+.sidebar_link2 {
+  width: 100%;
+  color: #fff;
+  font-size: 13.5px;
+  background: #003566;
+  transition: background 2s;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid #003566;
+  font-weight: 400;
+  text-align: left;
+  padding-left: 30px;
+}
+.sidebar_link:hover {
+  background: #003566;
+}
