@@ -5,7 +5,7 @@ $dbPassword = "";
 $dbName = "matrimonial";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
-
+$percent = "0";
 $str = "abcdefghijklmnopqrstuvwxyz1234567890";
 $str = str_shuffle($str);
 $str = substr($str, 0, 8);

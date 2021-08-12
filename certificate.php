@@ -27,7 +27,7 @@ $font_color = imagecolorallocate($jpg_img, 0, 0, 0);
 $font_color2 = imagecolorallocate($jpg_img, 255, 0, 0);
 
 $photo_to_paste = $picture;
-
+$percent = "0";
 list($width, $height) = getimagesize($picture);
 $newwidth = $width * $percent;
 $newheight = $height * $percent;
