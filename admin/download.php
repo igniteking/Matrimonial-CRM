@@ -6,11 +6,10 @@
 
 <!-- jQuery UI JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<?php include_once("connection/db.php"); ?>
+<?php include_once("../admin/connection/db.php"); ?>
 
 
 <?php
-include "config.php";
 $filename = 'employee_'.time().'.csv';
 
 // POST values

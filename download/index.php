@@ -1,4 +1,6 @@
-<?php include_once("../admin/connection/db.php"); ?>
+<?php 
+include "config.php";
+?>
 <!doctype html>
 <html>
     <head>
@@ -23,6 +25,45 @@
                 <!-- Export button -->
                 <input type='submit' value='Export' name='Export'>
             </form>  
+            <table border='1' style='border-collapse:collapse;'>
+                <tr>
+                    <th>ID</th>
+                    <th>Employee Name</th>
+                    <th>Salary</th>
+                    <th>Gender</th>
+                    <th>City</th>
+                    <th>Email</th>
+                    <th>Date of joining</th>
+                </tr>
+                <?php 
+                $query = "SELECT * FROM employee ORDER BY id asc";
+                $result = mysqli_query($con,$query);
+                $employee_arr = array();
+                while($row = mysqli_fetch_assoc($result)){
+                    $id = $row['id'];
+                    $emp_name = $row['emp_name'];
+                    $salary = $row['salary'];
+                    $gender = $row['gender'];
+                    $city = $row['city'];
+                    $email = $row['email'];
+                    $date_of_joining = $row['date_of_joining'];
+                    $employee_arr[] = array($id,$emp_name,$salary,$gender,$city,$email,$date_of_joining);
+                ?>
+                    <tr>
+                        <td><?php echo $id; ?></td>
+                        <td><?php echo $emp_name; ?></td>
+                        <td><?php echo $salary; ?></td>
+                        <td><?php echo $gender; ?></td>
+                        <td><?php echo $city; ?></td>
+                        <td><?php echo $email; ?></td>
+                        <td><?php echo $date_of_joining; ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
+            
+            
         </div>
 
         <!-- Script -->

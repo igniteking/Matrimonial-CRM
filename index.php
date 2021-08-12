@@ -185,17 +185,18 @@
                     $whatsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
                     $phone_number = strip_tags(@$_POST['alternative_phone_number']);
                     $status = strip_tags(@$_POST['marital_status']);
+                    $date = date("Y-m-d");
                     $picture = strip_tags(@$_POST['echo']);
                     if ($register) {
                         $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
             `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`,
              `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`,
-              `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`)
+              `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`, `creation_date`)
                VALUES 
                (Null, '$name', '$surname', '$email', '$sex', '$language', '$caste', '$sub_caste', 
             '$gothram', '$zodiac_sign', '$star', '$dob', '$pob', '$tob', '$city', '$district', '$state', '', '$color',
              '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
-              '$requirements', '$whatsapp_number', '$phone_number', '$picture', '$status')";
+              '$requirements', '$whatsapp_number', '$phone_number', '$picture', '$status' , '$date')";
                         $sql = mysqli_query($conn, $query);
                         exit('<div class="panel-heading">Confirm</div>
         <div class="panel-body">

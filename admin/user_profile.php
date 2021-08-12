@@ -53,6 +53,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
     $phone_number = $rows['phone_number'];
     $profile_pic = $rows['profile_pic'];
     $status = $rows['status'];
+    $maritial_status = $rows['maritial_status'];
 ?>
 <html>
 <head>
@@ -186,13 +187,14 @@ while ($rows = mysqli_fetch_assoc($result2)) {
         $whatsapp_number = strip_tags(@$_POST['whatsapp_number']);
         $phone_number = strip_tags(@$_POST['phone_number']);
         $status = strip_tags(@$_POST['status']);
+        $maritial_status = strip_tags(@$_POST['maritial_status']);
             $sql3 = "UPDATE `users` SET `name`='$name',`surname`='$surname', `email`='$email', `sex`='$sex',`language`='$language',
             `caste`='$caste',`sub_caste`='$sub_caste',`gothram`='$gothram',`zodiac_sign`='$zodiac_sign',`star`='$star',
             `dob`='$dob',`pob`='$pob',`tob`='$tob',`city`='$city',`district`='$district',
             `state`='$state',`height`='$height',`color`='$color',`eating_habits`='$eating_habits',
             `bad_habbits`='$bad_habbits',`education`='$education',`job`='$job',`job_location` = '$job_location',
             `nri`='$nri',`annual_income`='$annual_income',`parents_details`='$parents_details',`requirements`='$requirements',
-            `whatsapp_number`='$whatsapp_number',`phone_number`='$phone_number', `status`='$status'
+            `whatsapp_number`='$whatsapp_number',`phone_number`='$phone_number', `status`='$status', `maritial_status`='$maritial_status'
             WHERE id= '$user_id'";
             $rt = mysqli_query($conn, $sql3);
 
@@ -322,6 +324,10 @@ while ($rows = mysqli_fetch_assoc($result2)) {
             <input type="text" class="form-control" value="<?php echo $phone_number ;?>" name="phone_number" id="inputEmail4" placeholder="Phone Number">
             </div>
             <div class="form-group col-md-6">
+            <label for="inputEmail4">Marital Status</label>
+            <input type="text" class="form-control" value="<?php echo $maritial_status ;?>" name="maritial_status" id="inputEmail4" placeholder="Marital Status">
+            </div>
+            <div class="form-group col-md-6">
             <label for="inputEmail4">Status</label>
             <select name="status" class="input_styler2">
                     <option active><?php echo $status ;?></option>
@@ -329,6 +335,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
                     <option value="Engaged">Engaged</option>
             </select>
             </div>
+            
         </div>
         <div class="form-row">
         <div class="form-group col-md-4">
