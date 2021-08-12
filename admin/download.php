@@ -7,8 +7,7 @@
 */
 // Database Connection
 // get Users
-$user_id = $_GET['id']; // get id through query string
-$query = "SELECT * FROM users WHERE id = '$user_id";
+$query = "SELECT * FROM users";
 if (!$result = mysqli_query($conn, $query)) {
     exit(mysqli_error($conn));
 }
@@ -21,7 +20,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=Courses.csv');
+header('Content-Disposition: attachment; filename=Users.csv');
 $output = fopen('php://output', 'w');
 fputcsv($output, array(`Id`, `Name`, `Surname`, `Sex`, `Language`, `Caste`, `Sub Caste`, `Gothram`, `Zodiac Sign`, `Star`, `Date Of Birth`, `Place Of Birth`, `Time Of Birth`, `City`, `District`, `State`, `Height`,
  `Color`, `Eating Habits`, `Bad Habbits`, `Education`, `Job`, `Job Location`, `NRI`, `Annual Income`, `Parents Details`,

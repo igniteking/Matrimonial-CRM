@@ -323,7 +323,11 @@ while ($rows = mysqli_fetch_assoc($result2)) {
             </div>
             <div class="form-group col-md-6">
             <label for="inputEmail4">Status</label>
-            <input type="text" class="form-control" value="<?php echo $status ;?>" name="status" id="inputEmail4" placeholder="Status">
+            <select name="status" class="input_styler2">
+                    <option active><?php echo $status ;?></option>
+                    <option value="Not-Engaged">Not-Engaged</option>
+                    <option value="Engaged">Engaged</option>
+            </select>
             </div>
         </div>
         <div class="form-row">

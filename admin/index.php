@@ -193,6 +193,12 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <p style="font-weight: 600; font-size: 14px; color: #fff;"><?php echo $sims_rowcount; ?> Members</p>
                 </div>
             </div>
+            <a href="download.php"><div style="border: 2px solid #006d77; float: left; margin-right: 15px; margin-top: 15px; background: #006d77; box-shadow: 1px 1px 8px #888; width: 300px; height: 90px; border-radius: 4px;">
+                <div style="padding: 20px">
+                    <i class="fa fa-download" aria-hidden="true" style="padding-right: 10px; font-size: 30px; color: #83c5be; float: left;"></i>
+                    <p style="font-weight: 600; font-size: 18px; color: #83c5be; line-height: 40px;">Download All User Data</p>
+                </div>
+            </div></a>
             <?php 
             $query = "SELECT * FROM `search_name` WHERE 1";
             $result = mysqli_query($conn, $query);
@@ -204,7 +210,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
             ?>
 
             <form method="post" action="index.php" style="display: inline;">
-            <input type="submit" name="rename" value="📝 Rename" style="border: 2px solid #2b2d42; font-size: 20px; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; color: #fff; box-shadow: 1px 1px 8px #888; width: 300px; height: 90px; border-radius: 4px;">
+            <input type="submit" name="rename" value="📝 Rename" style="border: 2px solid #2b2d42; font-size: 20px; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; color: #fff; box-shadow: 1px 1px 8px #888; width: 305px; height: 90px; border-radius: 4px;">
             </form>
             <?php
                 $rename_btn = @$_POST['rename'];
