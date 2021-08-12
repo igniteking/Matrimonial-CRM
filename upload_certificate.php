@@ -1,5 +1,4 @@
 <?php
-
 $dbServername = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
@@ -76,6 +75,5 @@ imagejpeg($jpg_img, $save);
 
 $query = "INSERT INTO `certificate`(`id`, `certificate_url`, `date`, `user_id`) VALUES (null,'$save','$date','$last_id')";
 $sql = mysqli_query($conn, $query);
-
-?>
-<img src="<?php echo $save ?>">
+echo "<meta http-equiv=\"refresh\" content=\"0; url=index.php\">";
+exit();

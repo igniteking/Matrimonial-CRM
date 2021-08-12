@@ -206,8 +206,9 @@
         <div class="panel-body">
             <div class="form-group">
                 <div class="col-xs-6 col-md-12">
-                <center><object data="certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $picture . '"&&last_id=' . $last_id . '" width="900" height="900"></object></center>
-                </div>' . $picture . '
+                <center><object data="certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $picture . '&&last_id=' . $last_id . '" width="900" height="900"></object></center>
+                </div>
+                <a href="upload_certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $picture . '&&last_id=' . $last_id . '">Finish</a>
                 </div>
                 </div>
                 ');
