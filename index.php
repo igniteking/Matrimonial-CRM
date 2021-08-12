@@ -145,69 +145,75 @@
         <div id='cottage_div_divider'>
             <div class="col-sm-12">
                 <div class="panel panel-default" style="background-color: rgb(244, 247, 248);">
-                    <?php
+                    <form action="index.php" method="POST" enctype="multipart/form-data">
 
-                    $dbServername = "localhost";
-                    $dbUsername = "root";
-                    $dbPassword = "";
-                    $dbName = "matrimonial";
-                    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
+                        <?php
+                        $dbServername = "localhost";
+                        $dbUsername = "root";
+                        $dbPassword = "";
+                        $dbName = "matrimonial";
+                        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
 
-                    $success = "";
-                    $register = @$_POST['submit'];
-                    $name = strip_tags(@$_POST['first_name']);
-                    $surname = strip_tags(@$_POST['last_name']);
-                    $email = strip_tags(@$_POST['email_address']);
-                    $sex = strip_tags(@$_POST['gender']);
-                    $language = strip_tags(@$_POST['mother_tongue']);
-                    $caste = strip_tags(@$_POST['caste']);
-                    $sub_caste = strip_tags(@$_POST['sub_caste']);
-                    $gothram = strip_tags(@$_POST['gothram']);
-                    $zodiac_sign = strip_tags(@$_POST['astrological_sign']);
-                    $star = strip_tags(@$_POST['zodiac_star']);
-                    $dob = strip_tags(@$_POST['date_of_birth']);
-                    $pob = strip_tags(@$_POST['place_of_birth']);
-                    $tob = strip_tags(@$_POST['time_of_birth']);
-                    $city = strip_tags(@$_POST['city']);
-                    $district = strip_tags(@$_POST['district']);
-                    $state = strip_tags(@$_POST['state']);
-                    $height = strip_tags(@$_POST['groom_birde_height']);
-                    $color = strip_tags(@$_POST['skin_color']);
-                    $eating_habits = strip_tags(@$_POST['eating_habits']);
-                    $bad_habbits = strip_tags(@$_POST['smoking_drinking_details']);
-                    $education = strip_tags(@$_POST['qulification']);
-                    $job = strip_tags(@$_POST['job_business']);
-                    $job_location = strip_tags(@$_POST['job_current_location']);
-                    $nri = strip_tags(@$_POST['nri']);
-                    $annual_income = strip_tags(@$_POST['annual_income']);
-                    $parents_details = strip_tags(@$_POST['parents_details']);
-                    $requirements = strip_tags(@$_POST['requirements']);
-                    $whatsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
-                    $phone_number = strip_tags(@$_POST['alternative_phone_number']);
-                    $status = strip_tags(@$_POST['marital_status']);
-                    $picture = strip_tags(@$_POST['echo']);
-                    if ($register) {
-                        $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
+                        $success = "";
+                        $register = @$_POST['submit'];
+                        $name = strip_tags(@$_POST['first_name']);
+                        $surname = strip_tags(@$_POST['last_name']);
+                        $email = strip_tags(@$_POST['email_address']);
+                        $sex = strip_tags(@$_POST['gender']);
+                        $language = strip_tags(@$_POST['mother_tongue']);
+                        $gothram = strip_tags(@$_POST['gothram']);
+                        $zodiac_sign = strip_tags(@$_POST['astrological_sign']);
+                        $star = strip_tags(@$_POST['zodiac_star']);
+                        $dob = strip_tags(@$_POST['date_of_birth']);
+                        $pob = strip_tags(@$_POST['place_of_birth']);
+                        $tob = strip_tags(@$_POST['time_of_birth']);
+                        $city = strip_tags(@$_POST['city']);
+                        $district = strip_tags(@$_POST['district']);
+                        $state = strip_tags(@$_POST['state']);
+                        $height = strip_tags(@$_POST['groom_birde_height']);
+                        $color = strip_tags(@$_POST['skin_color']);
+                        $eating_habits = strip_tags(@$_POST['eating_habits']);
+                        $bad_habbits = strip_tags(@$_POST['smoking_drinking_details']);
+                        $education = strip_tags(@$_POST['qulification']);
+                        $job = strip_tags(@$_POST['job_business']);
+                        $job_location = strip_tags(@$_POST['job_current_location']);
+                        $nri = strip_tags(@$_POST['nri']);
+                        $annual_income = strip_tags(@$_POST['annual_income']);
+                        $parents_details = strip_tags(@$_POST['parents_details']);
+                        $requirements = strip_tags(@$_POST['requirements']);
+                        $whatsapp_number = strip_tags(@$_POST['primary_phone_watsapp_number']);
+                        $phone_number = strip_tags(@$_POST['alternative_phone_number']);
+                        $status = strip_tags(@$_POST['marital_status']);
+                        $picture = strip_tags(@$_POST['echo']);
+
+                        $date = date('Y-m-d');
+
+                        if ($register) {
+                            $query = "INSERT INTO `users`(`id`, `name`, `surname`, `email`, `sex`, `language`, `caste`, `sub_caste`, 
             `gothram`, `zodiac_sign`, `star`, `dob`, `pob`, `tob`, `city`, `district`, `state`, `height`, `color`,
              `eating_habits`, `bad_habbits`, `education`, `job`, `job_location`, `nri`, `annual_income`, `parents_details`,
-              `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`)
+              `requirements`, `whatsapp_number`, `phone_number`, `profile_pic`, `status`, `date`)
                VALUES 
-               (Null, '$name', '$surname', '$email', '$sex', '$language', '$caste', '$sub_caste', 
+               (Null, '$name', '$surname', '$email', '$sex', '$language', '', '', 
             '$gothram', '$zodiac_sign', '$star', '$dob', '$pob', '$tob', '$city', '$district', '$state', '', '$color',
              '$eating_habits', '$bad_habbits', '$education', '$job', '$job_location', '$nri', '$annual_income', '$parents_details',
-              '$requirements', '$whatsapp_number', '$phone_number', '$picture', '$status')";
-                        $sql = mysqli_query($conn, $query);
-                        exit('<div class="panel-heading">Confirm</div>
+              '$requirements', '$whatsapp_number', '$phone_number', '$picture', '$status', '$date')";
+
+
+                            $sql = mysqli_query($conn, $query);
+                            $last_id = mysqli_insert_id($conn);
+                            exit('<div class="panel-heading">Confirm</div>
         <div class="panel-body">
             <div class="form-group">
                 <div class="col-xs-6 col-md-12">
-                <center><object data="certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $picture . '" width="900" height="900"></object></center>
-                </div>'.$picture.'
+                <center><object data="certificate.php?name=' . $name . ' ' . $surname . '&&job=' . $job . '&&parent=' . $parents_details . '&&requirements=' . $requirements . '&&dob=' . $dob . '&&tob=' . $tob . '&&pob=' . $pob . '&&mobile=' . $whatsapp_number . '&&zodiac_sign=' . $zodiac_sign . '&&city=' . $city . '&&district=' . $district . '&&state=' . $state . '&&height=' . $height . '&&picture=' . $picture . '"&&last_id=' . $last_id . '" width="900" height="900"></object></center>
+                </div>' . $picture . '
                 </div>
-                </div>');
-                    };
-                    ?>
-                    <form action="index.php" method="POST" enctype="multipart/form-data">
+                </div>
+                ');
+                        };
+
+                        ?>
                         <style type="text/css">
                             img {
                                 display: block;
@@ -382,30 +388,6 @@
                                     <div class="addharcardExists"></div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-xs-12 col-md-12" style="margin-top: 15px;">
-                                    <label for="caste">Caste (కులం)</label>
-                                    <select class="form-control" name="caste" id="caste" required>
-                                        <option value="">Select One</option>
-                                        <option value="Vishwabramin">Vishwabramin</option>
-                                        <option value="Viswakarma">Viswakarma</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-12 col-md-12" style="margin-top: 15px;">
-                                    <label for="sub_caste">Sub Caste (ఉప కులం)</label>
-                                    <select class="form-control" name="sub_caste" id="sub_caste" required>
-                                        <option value="">Select One</option>
-                                        <option value="Bronze Smith"> Bronze Smith</option>
-                                        <option value="Black Smith"> Black Smith</option>
-                                        <option value="Carpentry (Vadrangi, Vadla)"> Carpentry (Vadrangi, Vadla)</option>
-                                        <option value="Goldsmiths"> Goldsmiths</option>
-                                        <option value="Sculptor (Shilpi)"> Sculptor (Shilpi)</option>
-                                        <option value="Others"> Others</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group" style="margin-top: 15px;">
                                 <div class="col-xs-12 col-md-12" style="margin-top: 15px;">
                                     <label for="gothram">Gothram (గోత్రం)</label>
@@ -505,6 +487,7 @@
                                     <option value="Uttar Pradesh">Uttar Pradesh</option>
                                     <option value="Uttarakhand">Uttarakhand</option>
                                     <option value="West Bengal">West Bengal</option>
+                                    <option value="Others">Others</option>
                                 </select>
                             </div>
                             <div class="form-group" style="margin-top: 15px;">
@@ -575,7 +558,6 @@
                                         <option value="Vegetarian">Vegetarian</option>
                                         <option value="Non Vegetarian">Non Vegetarian</option>
                                         <option value="Eggetarian">Eggetarian</option>
-                                        <option value="Both VEG/NON VEG">Both VEG/NON VEG</option>
                                     </select>
                                 </div>
                             </div>
@@ -589,6 +571,7 @@
                                         <option value="Occassionally Smoker">Occassionally Smoker</option>
                                         <option value="Occassionally Drinker">Occassionally Drinker</option>
                                         <option value="Non Smoker/Non Drinker">Non Smoker/Non Drinker</option>
+                                        <option value="Smoking/Drinking">Smoking/Drinking</option>
                                     </select>
                                 </div>
                             </div>
@@ -733,6 +716,7 @@
                                     <option value="Registered Practical Nurse">Registered Practical Nurse</option>
                                     <option value="T.T.C">T.T.C</option>
                                     <option value="Trade School">Trade School</option>
+                                    <option value="Trade School">Others</option>
                                 </select>
                             </div>
                         </div>
