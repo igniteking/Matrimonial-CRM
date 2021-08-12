@@ -18,6 +18,14 @@ while ($rows = mysqli_fetch_assoc($result)) {
 ?>
 <html>
 <head>
+    <!-- jQuery UI CSS -->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+<!-- jQuery --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- jQuery UI JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard</title>
@@ -198,7 +206,45 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <i class="fa fa-download" aria-hidden="true" style="padding-right: 10px; font-size: 30px; color: #83c5be; float: left;"></i>
                     <p style="font-weight: 600; font-size: 18px; color: #83c5be; line-height: 40px;">Download All User Data</p>
                 </div>
-            </div></a>
+            </div></a><script>
+$(document).ready(function(){
+
+    // From datepicker
+    $("#from_date").datepicker({ 
+       dateFormat: 'yy-mm-dd',
+       changeYear: true,
+       onSelect: function (selected) {
+          var dt = new Date(selected);
+          dt.setDate(dt.getDate() + 1);
+          $("#to_date").datepicker("option", "minDate", dt);
+       }
+    });
+ 
+    // To datepicker
+    $("#to_date").datepicker({
+       dateFormat: 'yy-mm-dd',
+       changeYear: true,
+       onSelect: function (selected) {
+          var dt = new Date(selected);
+          dt.setDate(dt.getDate() - 1);
+          $("#from_date").datepicker("option", "maxDate", dt);
+       }
+    });
+ });</script>
+            <div style="border: 2px solid #fca311; float: left; margin-right: 15px; margin-top: 15px; background: #fca311; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
+                <div style="padding: 20px"> 
+                <form method='post' action='download.php'>
+                <!-- Datepicker -->
+                <input type='text' class='datepicker' placeholder="From date" name="from_date" id='from_date' readonly>
+                <input type='text' class='datepicker' placeholder="To date" name="to_date" id='to_date' readonly>
+                <!-- Export button -->
+                <input type='submit' value='Export' name='Export'>
+                </form> 
+                </div>
+            </div>
+            <div >
+
+</div>
             <?php 
             $query = "SELECT * FROM `search_name` WHERE 1";
             $result = mysqli_query($conn, $query);
