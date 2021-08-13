@@ -24,6 +24,12 @@ while ($rows = mysqli_fetch_assoc($result)) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 
 <div class="sidebar" id="sidebar_toggle" style="background: #a4133c;">
@@ -193,6 +199,42 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <p style="font-weight: 600; font-size: 14px; color: #fff;"><?php echo $sims_rowcount; ?> Members</p>
                 </div>
             </div>
+            <div style="border: 2px solid #fca311; float: left; margin-right: 15px; margin-top: 15px; background: #fca311; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
+                <div style="padding: 20px"> 
+                    <form method='post' action='download_date.php'>
+                    <!-- Datepicker -->
+                    <input type='text' class='datepicker' placeholder="From date" name="from_date" id='from_date' readonly>
+                    <br><br>
+                    <input type='text' class='datepicker' placeholder="To date" name="to_date" id='to_date' readonly>
+                    <!-- Export button -->
+                    <input type='submit' value='Export' name='Export'>
+                    </form>  
+                </div>
+            </div>
+            <script type='text/javascript' >
+                $(document).ready(function(){
+
+                // From datepicker
+                    $("#from_date").datepicker({ 
+                        dateFormat: 'yy-mm-dd',changeYear: true,
+                        onSelect: function (selected) {
+                        var dt = new Date(selected);
+                        dt.setDate(dt.getDate() + 1);
+                        $("#to_date").datepicker("option", "minDate", dt);
+                    }
+                });
+
+                // To datepicker
+                    $("#to_date").datepicker({
+                            dateFormat: 'yy-mm-dd',changeYear: true,
+                            onSelect: function (selected) {
+                            var dt = new Date(selected);
+                            dt.setDate(dt.getDate() - 1);
+                            $("#from_date").datepicker("option", "maxDate", dt);
+                        }
+                    });
+                });
+        </script>
             <a href="download.php"><div style="border: 2px solid #006d77; float: left; margin-right: 15px; margin-top: 15px; background: #006d77; box-shadow: 1px 1px 8px #888; width: 300px; height: 90px; border-radius: 4px;">
                 <div style="padding: 20px">
                     <i class="fa fa-download" aria-hidden="true" style="padding-right: 10px; font-size: 30px; color: #83c5be; float: left;"></i>
