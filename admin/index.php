@@ -363,7 +363,7 @@ while ($rows = mysqli_fetch_assoc($result2)) {
     <td><?php echo $phone_number;?></td>
     <td>        <a href='../<?php echo $certificate;?>' target='_blank'><button title='View Image' style='width: 40px; padding: 5px; background: #ffb703; border: 1px solid #ffb703; border-radius: 4px; color: #333; cursor: hand;'><i class='fas fa-archive'></i></button></a>
                 <a href="user_profile.php?id=<?php echo $userid; ?>"><button title='Profile' style='background: #537EC5; width: 40px; padding: 5px; background: #3f37c9; border: 1px solid #3f37c9; border-radius: 4px; color: #fff; cursor: hand;'><i class="fas fa-id-card"></i></button></a>
-                <a href="delete.php?id=<?php echo $id; ?>"><button title='Delete Id' style='background: red; width: 40px; padding: 5px; background: #e63946; border: 1px solid #e63946; border-radius: 4px; color: #fff; cursor: hand;'><i class='fas fa-trash'></i></button></a></td>
+                <a href="delete.php?id=<?php echo $userid;?>"><button title='Delete Id' style='background: red; width: 40px; padding: 5px; background: #e63946; border: 1px solid #e63946; border-radius: 4px; color: #fff; cursor: hand;'><i class='fas fa-trash'></i></button></a></td>
     <td><a href='../<?php echo $certificate;?>' download="certificate_<?php echo $userid; ?>"><button title='Download Certificate' style='width: 40px; padding: 5px; background: green; border: 1px solid green; border-radius: 4px; color: #eee; cursor: hand;'><i class="fas fa-save"></i></button></a></td>
   </tr><?php } ?>
 </table>
