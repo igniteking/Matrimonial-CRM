@@ -286,7 +286,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
 </div>
 
 
-
     <div id="area_2" style="display: none; padding: 30px;">
     <style>
 #customers {
