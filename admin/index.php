@@ -235,7 +235,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     });
                 });
         </script>
-            <a href="download.php"><div style="border: 2px solid #006d77; float: left; margin-right: 15px; margin-top: 15px; background: #006d77; box-shadow: 1px 1px 8px #888; width: 300px; height: 90px; border-radius: 4px;">
+            <a href="download.php"><div style="border: 2px solid #006d77; float: left; margin-right: 15px; margin-top: 15px; background: #006d77; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
                 <div style="padding: 20px">
                     <i class="fa fa-download" aria-hidden="true" style="padding-right: 10px; font-size: 30px; color: #83c5be; float: left;"></i>
                     <p style="font-weight: 600; font-size: 18px; color: #83c5be; line-height: 40px;">Download All User Data</p>
@@ -252,7 +252,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
             ?>
 
             <form method="post" action="index.php" style="display: inline;">
-            <input type="submit" name="rename" value="📝 Rename" style="border: 2px solid #2b2d42; font-size: 20px; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; color: #fff; box-shadow: 1px 1px 8px #888; width: 305px; height: 90px; border-radius: 4px;">
+            <input type="submit" name="rename" value="📝 Rename" style="border: 2px solid #2b2d42; font-size: 20px; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; color: #fff; box-shadow: 1px 1px 8px #888; width: 305px; height: 120px; border-radius: 4px;">
             </form>
             <?php
                 $rename_btn = @$_POST['rename'];
@@ -277,17 +277,13 @@ while ($rows = mysqli_fetch_assoc($result)) {
                 echo "<meta http-equiv=\"refresh\" content=\"0; url=login.php\">";
             }
             ?>
-            <a href="../<?php echo $search_name_first?>"><div style="border: 2px solid #2b2d42; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; box-shadow: 1px 1px 8px #888; width: 620px; height: 90px; border-radius: 4px;">
+            <a href="../<?php echo $search_name_first?>"><div style="border: 2px solid #2b2d42; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
                 <div style="padding: 20px">
                     <p style="font-weight: 600; font-size: 18px; color: #eee; padding: 10px;"><?php echo $search_name_first?></p>
                 </div>
             </div></a>
     </div>
 </div>
-
-
-
-
 
 
     <div id="area_2" style="display: none; padding: 30px;">
@@ -350,6 +346,13 @@ while ($rows = mysqli_fetch_assoc($result)) {
     $dob = $rows['dob'];
     $phone_number = $rows['phone_number'];
 
+$query2 = "SELECT * FROM `certificate` WHERE user_id ='$userid'";
+$result2 = mysqli_query($conn, $query2);
+
+while ($rows = mysqli_fetch_assoc($result2)) {
+    $certificate = $rows['certificate_url'];
+}
+
 ?>
   <tr>
     <td><?php echo $userid;?></td>
@@ -358,10 +361,10 @@ while ($rows = mysqli_fetch_assoc($result)) {
     <td><?php echo $status;?></td>
     <td><?php echo $dob;?></td>
     <td><?php echo $phone_number;?></td>
-    <td><button title='View Image' style='width: 40px; padding: 5px; background: #ffb703; border: 1px solid #ffb703; border-radius: 4px; color: #333; cursor: hand;'><i class='fas fa-archive'></i></button>
+    <td>        <a href='../<?php echo $certificate;?>' target='_blank'><button title='View Image' style='width: 40px; padding: 5px; background: #ffb703; border: 1px solid #ffb703; border-radius: 4px; color: #333; cursor: hand;'><i class='fas fa-archive'></i></button></a>
                 <a href="user_profile.php?id=<?php echo $userid; ?>"><button title='Profile' style='background: #537EC5; width: 40px; padding: 5px; background: #3f37c9; border: 1px solid #3f37c9; border-radius: 4px; color: #fff; cursor: hand;'><i class="fas fa-id-card"></i></button></a>
-                <a href="delete.php?id=<?php echo $id; ?>"><button title='Delete Id' style='background: red; width: 40px; padding: 5px; background: #e63946; border: 1px solid #e63946; border-radius: 4px; color: #fff; cursor: hand;'><i class='fas fa-trash'></i></button></a></td>
-    <td><a href='download.php?id=<?php echo $id; ?>'><button title='Download Id' style='width: 40px; padding: 5px; background: green; border: 1px solid green; border-radius: 4px; color: #eee; cursor: hand;'><i class="fas fa-save"></i></button></a></td>
+                <a href="delete.php?id=<?php echo $userid;?>"><button title='Delete Id' style='background: red; width: 40px; padding: 5px; background: #e63946; border: 1px solid #e63946; border-radius: 4px; color: #fff; cursor: hand;'><i class='fas fa-trash'></i></button></a></td>
+    <td><a href='../<?php echo $certificate;?>' download="certificate_<?php echo $userid; ?>"><button title='Download Certificate' style='width: 40px; padding: 5px; background: green; border: 1px solid green; border-radius: 4px; color: #eee; cursor: hand;'><i class="fas fa-save"></i></button></a></td>
   </tr><?php } ?>
 </table>
 
