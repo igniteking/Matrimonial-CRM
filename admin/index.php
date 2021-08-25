@@ -199,7 +199,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <p style="font-weight: 600; font-size: 14px; color: #fff;"><?php echo $sims_rowcount; ?> Members</p>
                 </div>
             </div>
-            <div style="border: 2px solid #219ebc; float: left; margin-right: 15px; margin-top: 15px; background: #219ebc; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
+            <div style="border: 2px solid #219ebc; float: left; margin-right: 15px; margin-top: 15px; background: #219ebc; box-shadow: 1px 1px 8px #888; width: 300px; height: 160px; border-radius: 4px;">
                 <div style="padding: 20px"> 
                     <form method='post' action='download_date.php'>
                     <!-- Datepicker -->
@@ -207,7 +207,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <br><br>
                     <input type='text' class='datepicker' placeholder="To date" style="background-color: #8ecae6; border: 3px solid white; padding: 3px; color:#eee;" name="to_date" id='to_date' readonly>
                     <!-- Export button -->
-                    <input type='submit' value='Export' style="color: #eee; margin-left: 5px; border: 3px solid white; padding: 3px; width: 80px; background-color: #0096c7;" name='Export'>
+                    <input type='submit' value='Export' style="color: #eee; margin: 10px; margin-left: 0px; border: 3px solid white; padding: 3px; width: 80px; background-color: #0096c7;" name='Export'>
                     </form>  
                 </div>
             </div>
