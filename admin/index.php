@@ -33,6 +33,8 @@ while ($rows = mysqli_fetch_assoc($result)) {
 </head>
 
 <div class="sidebar" id="sidebar_toggle" style="background: #a4133c;">
+<button id="hide_btn1" style="background: #fff; float: left;  border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888;" onclick="panel1()"><i class="fas fa-bars"></i></button>
+        <button id="show_btn1" style="display: none; float: left; background: #fff; border: 1px solid #eee; padding: 10px; margin-top: 5px; color: #888;" onclick="panel2()"><i class="fas fa-bars"></i></button>
     <br><br><br>
         <center><img src="images/logo.png" width="120px"></center><br><br><br>
         <button class="sidebar_link" onclick="main1()"><i class="fas fa-home" style="padding-right: 15px;"></i> Dashboard</button>
@@ -81,31 +83,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
         </script>
     </div>
 </div>
-<style type="text/css">
-    .sidebar {
-        width: 20%;
-        height: 100%;
-        background: #001d3d;
-        position: fixed;
-    }
 
-    .header {
-        width: 80%;
-        background: #fff;
-        border-bottom: 1px solid #eee;
-        height: 65px;
-        position: absolute;
-        right: 0;
-    }
-
-    #body_area {
-        width: 80%;
-        background: #fff;
-        right: 0;
-        top: 70;
-        position: absolute;
-    }
-</style>
 <script>
     function panel1() {
         document.getElementById("sidebar_toggle").style.width = '0%';
@@ -199,7 +177,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <p style="font-weight: 600; font-size: 14px; color: #fff;"><?php echo $sims_rowcount; ?> Members</p>
                 </div>
             </div>
-            <div style="border: 2px solid #219ebc; float: left; margin-right: 15px; margin-top: 15px; background: #219ebc; box-shadow: 1px 1px 8px #888; width: 300px; height: 160px; border-radius: 4px;">
+            <div style="border: 2px solid #219ebc; float: left; margin-right: 15px; margin-top: 15px; background: #219ebc; box-shadow: 1px 1px 8px #888; width: 300px; height: 170px; border-radius: 4px;">
                 <div style="padding: 20px"> 
                     <form method='post' action='download_date.php'>
                     <!-- Datepicker -->
@@ -208,6 +186,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     <input type='text' class='datepicker' placeholder="To date" style="background-color: #8ecae6; border: 3px solid white; padding: 3px; color:#eee;" name="to_date" id='to_date' readonly>
                     <!-- Export button -->
                     <input type='submit' value='Export' style="color: #eee; margin: 10px; margin-left: 0px; border: 3px solid white; padding: 3px; width: 80px; background-color: #0096c7;" name='Export'>
+                    <a href="download.php"><input type='submit' value='Export All' style="color: #eee; margin: 10px; width:190px; margin-left: 0px; border: 3px solid white; padding: 3px; width: 80px; background-color: #0096c7;"></a>
                     </form>  
                 </div>
             </div>
@@ -235,12 +214,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                     });
                 });
         </script>
-            <a href="download.php"><div style="border: 2px solid #006d77; float: left; margin-right: 15px; margin-top: 15px; background: #006d77; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
-                <div style="padding: 20px">
-                    <i class="fa fa-download" aria-hidden="true" style="padding-right: 10px; font-size: 30px; color: #83c5be; float: left;"></i>
-                    <p style="font-weight: 600; font-size: 18px; color: #83c5be; line-height: 40px;">Download All User Data</p>
-                </div>
-            </div></a>
+            
             <?php 
             $query = "SELECT * FROM `search_name` WHERE 1";
             $result = mysqli_query($conn, $query);
@@ -251,9 +225,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
             }
             ?>
 
-            <form method="post" action="index.php" style="display: inline;">
-            <input type="submit" name="rename" value="📝 Rename" style="border: 2px solid #2b2d42; font-size: 20px; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; color: #fff; box-shadow: 1px 1px 8px #888; width: 305px; height: 120px; border-radius: 4px;">
-            </form>
+            
             <?php
                 $rename_btn = @$_POST['rename'];
                 if($rename_btn){
@@ -277,8 +249,12 @@ while ($rows = mysqli_fetch_assoc($result)) {
                 echo "<meta http-equiv=\"refresh\" content=\"0; url=login.php\">";
             }
             ?>
-            <a href="../<?php echo $search_name_first?>"><div style="border: 2px solid #2b2d42; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; box-shadow: 1px 1px 8px #888; width: 300px; height: 120px; border-radius: 4px;">
-                <div style="padding: 20px">
+            <a href="../<?php echo $search_name_first?>"><div style="border: 2px solid #2b2d42; float: left; margin-right: 15px; margin-top: 15px; background: #2b2d42; box-shadow: 1px 1px 8px #888; width: 300px; height: 170px; border-radius: 4px;">
+                <div style="padding: 10px">
+                <form method="post" action="index.php" style="display: inline;">
+            <input type="submit" name="rename" value="📝 Rename" style=" font-size: 15px; border: none; float: left; background: black; color: #fff; width: 100%; height: 40px; border-radius: 4px;"><br><br>
+            </form>
+                <p style="font-weight: 600; font-size: 17px; color: #eee; padding: 10px;">Generate Search Page Link</p>
                     <p style="font-weight: 600; font-size: 18px; color: #eee; padding: 10px;"><?php echo $search_name_first?></p>
                 </div>
             </div></a>

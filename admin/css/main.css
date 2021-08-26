@@ -99,3 +99,54 @@
 .sidebar_link:hover {
   background: #003566;
 }
+.sidebar {
+  width: 20%;
+  height: 100%;
+  background: #001d3d;
+  position: fixed;
+}
+
+.header {
+  width: 80%;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  height: 65px;
+  position: absolute;
+  right: 0;
+}
+
+#body_area {
+  width: 80%;
+  background: #fff;
+  right: 0;
+  top: 70;
+  position: absolute;
+}
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    width: 300px;
+    height: 100%;
+    background: #001d3d;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.header {
+    width: 80%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    height: 65px;
+    position: absolute;
+    right: 0;
+}
+
+#body_area {
+    width: 80%;
+    background: #fff;
+    right: 0;
+    top: 70;
+    position: absolute;
+}
+}
