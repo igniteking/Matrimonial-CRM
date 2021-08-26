@@ -122,31 +122,42 @@
   top: 70;
   position: absolute;
 }
+.mobile_hide {
+  display: block;
+}
+.mobile_show {
+  display: none;
+}
 @media only screen and (max-width: 600px) {
+  .mobile_hide {
+    display: none;
+  }
+  .mobile_show {
+    display: block;
+  }
   .sidebar {
     width: 300px;
     height: 100%;
     background: #001d3d;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     z-index: 100;
-}
-
-.header {
+  }
+  .header {
     width: 80%;
     background: #fff;
     border-bottom: 1px solid #eee;
     height: 65px;
     position: absolute;
     right: 0;
-}
+  }
 
-#body_area {
+  #body_area {
     width: 80%;
     background: #fff;
     right: 0;
     top: 70;
     position: absolute;
-}
+  }
 }
