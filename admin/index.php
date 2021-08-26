@@ -34,7 +34,6 @@ while ($rows = mysqli_fetch_assoc($result)) {
 </head>
 
 <div class="sidebar" id="sidebar_toggle" style="background: #a4133c;">
-
     <br><br><br>
     <center><img src="images/logo.png" width="120px"></center><br><br><br>
     <button class="sidebar_link" onclick="main1()"><i class="fas fa-home" style="padding-right: 15px;"></i> Dashboard</button>
