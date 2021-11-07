@@ -1,34 +1,79 @@
-<?php include_once("connection/db.php"); ?>
 <?php
-/*
-* iTech Empires:  Export Data from MySQL to CSV Script
-* Version: 1.0.0
-* Page: Export
-*/
-// Database Connection
-// get Users
-$query = "SELECT * FROM users";
-if (!$result = mysqli_query($conn, $query)) {
-    exit(mysqli_error($conn));
+include "config.php";
+$filename = 'Users'.time().'.csv';
+
+// POST values
+$from_date = $_POST['from_date'];
+$to_date = $_POST['to_date'];
+
+// Select query
+$query = "SELECT * FROM users ORDER BY id asc";
+
+if(isset($_POST['from_date']) && isset($_POST['to_date'])){
+	$query = "SELECT * FROM users";
 }
 
-$users = array();
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $users[] = $row;
-    }
+$result = mysqli_query($conn,$query);
+$employee_arr = array();
+
+// file creation
+$file = fopen($filename,"w");
+
+// Header row - Remove this code if you don't want a header row in the export file.
+$employee_arr = array("id","Name","surname","email","Gender","language","caste",
+"sub_caste","gothram","zodiac_sign","star","dob","pob","tob","city","district","state","height","color","eating_habits","bad_habbits",
+"education","job","job_location","nri","annual_income","parents_details","requirements","whatsapp_number","whatsapp_number","phone_number","status"); 
+fputcsv($file,$employee_arr);   
+while($rows = mysqli_fetch_assoc($result)){
+    $id = $rows['id'];
+    $name = $rows['name'];
+    $surname = $rows['surname'];
+    $email = $rows['email'];
+    $sex = $rows['sex'];
+    $language = $rows['language'];
+    $caste = $rows['caste'];
+    $sub_caste = $rows['sub_caste'];
+    $gothram = $rows['gothram'];
+    $zodiac_sign = $rows['zodiac_sign'];
+    $star = $rows['star'];
+    $dob = $rows['dob'];
+    $pob = $rows['pob'];
+    $tob = $rows['tob'];
+    $city = $rows['city'];
+    $district = $rows['district'];
+    $state = $rows['state'];
+    $height = $rows['height'];
+    $color = $rows['color'];
+    $eating_habits = $rows['eating_habits'];
+    $bad_habbits = $rows['bad_habbits'];
+    $education = $rows['education'];
+    $job = $rows['job'];
+    $job_location = $rows['job_location'];
+    $nri = $rows['nri'];
+    $annual_income = $rows['annual_income'];
+    $parents_details = $rows['parents_details'];
+    $requirements = $rows['requirements'];
+    $whatsapp_number = $rows['whatsapp_number'];
+    $phone_number = $rows['phone_number'];
+    $profile_pic = $rows['profile_pic'];
+    $status = $rows['status'];
+
+    // Write to file 
+    $employee_arr = array($id,$name,$surname,$email,$sex,$language,$caste,
+    $sub_caste,$gothram,$zodiac_sign,$star,$dob,$pob,$tob,$city,$district,$state,$height,$color,$eating_habits,$bad_habbits,
+    $whatsapp_number,$phone_number,$profile_pic,$status);
+    fputcsv($file,$employee_arr);   
 }
 
-header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=Users.csv');
-$output = fopen('php://output', 'w');
-fputcsv($output, array(`Id`, `Name`, `Surname`, `Sex`, `Language`, `Caste`, `Sub Caste`, `Gothram`, `Zodiac Sign`, `Star`, `Date Of Birth`, `Place Of Birth`, `Time Of Birth`, `City`, `District`, `State`, `Height`,
- `Color`, `Eating Habits`, `Bad Habbits`, `Education`, `Job`, `Job Location`, `NRI`, `Annual Income`, `Parents Details`,
-  `Requirements`, `Whatsapp Number`, `Phone Number`, `Profile Pic`, `Status`));
+fclose($file); 
 
-if (count($users) > 0) {
-    foreach ($users as $row) {
-        fputcsv($output, $row);
-    }
-}
-?>
+// download
+header("Content-Description: File Transfer");
+header("Content-Disposition: attachment; filename=$filename");
+header("Content-Type: application/csv; "); 
+
+readfile($filename);
+
+// deleting file
+unlink($filename);
+exit();

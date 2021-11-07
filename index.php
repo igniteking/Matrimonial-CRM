@@ -1,3 +1,11 @@
+<?php
+                            $dbServername = "localhost";
+                        $dbUsername = "ujreqity6nrzd";
+                        $dbPassword = "*3d#5kc^5t]%";
+                        $dbName = "dbwjcfizozwqac";
+                        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
+
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -16,6 +24,10 @@
     <!-- JavaScript Bundle with Popper -->
     <link href="dist/cropper.min.css" rel="stylesheet" type="text/css" />
     <link href="dist/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <style type="text/css">
     @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600;400;700;800&display=swap");
@@ -28,7 +40,7 @@
     }
 
     body {
-        background: #e3eaee;
+        background: #ffe757;
     }
 
     .header_main {
@@ -146,14 +158,7 @@
             <div class="col-sm-12">
                 <div class="panel panel-default" style="background-color: rgb(244, 247, 248);">
                     <form action="index.php" method="POST" enctype="multipart/form-data">
-
                         <?php
-                        $dbServername = "localhost";
-                        $dbUsername = "root";
-                        $dbPassword = "";
-                        $dbName = "matrimonial";
-                        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName) or die;
-
                         $success = "";
                         $register = @$_POST['submit'];
                         $name = strip_tags(@$_POST['first_name']);
@@ -290,8 +295,8 @@
                                             <label for="qulification">Gender</label>
 
                                             <select class="form-control" name="gender" id="qulification" required>
-                                                <option value="Female">🙎 𝗙𝗘𝗠𝗔𝗟𝗘 (వధువు)</option>
                                                 <option value="Male">🤵 𝗠𝗔𝗟𝗘 (వరుడు)</option>
+                                                <option value="Female">🙎 𝗙𝗘𝗠𝗔𝗟𝗘 (వధువు)</option>
                                             </select>
                                         </div>
                                     </div>
@@ -424,7 +429,7 @@
                             <div class="form-group" style="margin-top: 15px;">
                                 <div class="col-xs-12 col-md-12" style="margin-top: 15px;">
                                     <label for="date_of_birth">Date Of Birth (పుట్టిన తేది)</label>
-                                    <input type="text" class="form-control datepick" name="date_of_birth" id="date_of_birth" readonly required />
+                                    <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" placeholder="Date Of Birth" required />
                                 </div>
                             </div>
                             <div class="form-group" style="margin-top: 15px;">
@@ -496,42 +501,42 @@
                                     <label for="groom_birde_height">Height (ఎత్తు)</label>
                                     <select class="form-control" name="groom_birde_height" id="groom_birde_height" required>
                                         <option value="">Select HEIGHT</option>
-                                        <option value="6' 11"> 6' 11" </option>
-                                        <option value="6' 10"> 6' 10" </option>
-                                        <option value="6' 9"> 6' 9" </option>
-                                        <option value="6' 8"> 6' 8" </option>
-                                        <option value="6' 7"> 6' 7" </option>
-                                        <option value="6' 6"> 6' 6" </option>
-                                        <option value="6' 5"> 6' 5" </option>
-                                        <option value="6' 4"> 6' 4" </option>
-                                        <option value="6' 3"> 6' 3" </option>
-                                        <option value="6' 2"> 6' 2" </option>
-                                        <option value="6' 1"> 6' 1" </option>
-                                        <option value="6' 0"> 6' 0" </option>
-                                        <option value="5' 11"> 5' 11" </option>
-                                        <option value="5' 10"> 5' 10" </option>
-                                        <option value="5' 9"> 5' 9" </option>
-                                        <option value="5' 8"> 5' 8" </option>
-                                        <option value="5' 7"> 5' 7" </option>
-                                        <option value="5' 6"> 5' 6" </option>
-                                        <option value="5' 5"> 5' 5" </option>
-                                        <option value="5' 4"> 5' 4" </option>
-                                        <option value="5' 3"> 5' 3" </option>
-                                        <option value="5' 2"> 5' 2" </option>
-                                        <option value="5' 1"> 5' 1" </option>
-                                        <option value="5' 0"> 4' 0" </option>
-                                        <option value="4' 11"> 4' 11" </option>
-                                        <option value="4' 10"> 4' 10" </option>
-                                        <option value="4' 9"> 4' 9" </option>
-                                        <option value="4' 8"> 4' 8" </option>
-                                        <option value="4' 7"> 4' 7" </option>
-                                        <option value="4' 6"> 4' 6" </option>
-                                        <option value="4' 5"> 4' 5" </option>
-                                        <option value="4' 4"> 4' 4" </option>
-                                        <option value="4' 3"> 4' 3" </option>
-                                        <option value="4' 2"> 4' 2" </option>
-                                        <option value="4' 1"> 4' 1" </option>
-                                        <option value="4' 0"> 4' 0" </option>
+                                        <option value='83'> 6' 11" </option>
+                                        <option value='82'> 6' 10" </option>
+                                        <option value='81'> 6' 9" </option>
+                                        <option value='80'> 6' 8" </option>
+                                        <option value='79'> 6' 7" </option>
+                                        <option value='78'> 6' 6" </option>
+                                        <option value='77'> 6' 5" </option>
+                                        <option value='76'> 6' 4" </option>
+                                        <option value='75'> 6' 3" </option>
+                                        <option value='74'> 6' 2" </option>
+                                        <option value='73'> 6' 1" </option>
+                                        <option value='72'> 6' 0" </option>
+                                        <option value='71'> 5' 11" </option>
+                                        <option value='70'> 5' 10" </option>
+                                        <option value='69'> 5' 9" </option>
+                                        <option value='68'> 5' 8" </option>
+                                        <option value='67'> 5' 7" </option>
+                                        <option value='66'> 5' 6" </option>
+                                        <option value='65'> 5' 5" </option>
+                                        <option value='64'> 5' 4" </option>
+                                        <option value='63'> 5' 3" </option>
+                                        <option value='62'> 5' 2" </option>
+                                        <option value='61'> 5' 1" </option>
+                                        <option value='60'> 5' 0" </option>
+                                        <option value='59'> 4' 11" </option>
+                                        <option value='58'> 4' 10" </option>
+                                        <option value='57'> 4' 9" </option>
+                                        <option value='56'> 4' 8" </option>
+                                        <option value='55'> 4' 7" </option>
+                                        <option value='54'> 4' 6" </option>
+                                        <option value='53'> 4' 5" </option>
+                                        <option value='52'> 4' 4" </option>
+                                        <option value='51'> 4' 3" </option>
+                                        <option value='50'> 4' 2" </option>
+                                        <option value='49'> 4' 1" </option>
+                                        <option value='48'> 4' 0" </option>
                                     </select>
                                 </div>
                             </div>

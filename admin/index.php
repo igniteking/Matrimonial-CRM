@@ -322,7 +322,7 @@ while ($rows = mysqli_fetch_assoc($result)) {
                 <th>Download</th>
             </tr>
             <?php
-            $query = "SELECT * from users";
+            $query = "SELECT * from users order by id desc";
             $result = mysqli_query($conn, $query);
 
             while ($rows = mysqli_fetch_assoc($result)) {

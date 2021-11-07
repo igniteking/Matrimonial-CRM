@@ -1,0 +1,2 @@
+SetEnv PHPRC /home/customer/www/v2.vishwavedika.net/public_html/php.ini
+AddHandler application/x-httpd-php80 .php .php5 .php4 .php3

@@ -31,9 +31,7 @@ if (isset($_POST['submit'])) {
                     $_SESSION['id'] = $id_login;
                     $_SESSION['admin_name'] = $username_login;
                     $_SESSION['admin_password'] = $password_login;
-                    echo "hi admin";
-                    header("Location: index.php");
-                    exit();
+                    echo "<meta http-equiv=\"refresh\" content=\"0; url=index.php\">";
                 } else {
                     $error = "<br><f style='font-size: 14px; color: #ff2d2d;'>Unknown Credentials. Check Again Your Inputs!</f><br>";
                 }

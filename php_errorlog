@@ -1,0 +1,32 @@
+[23-Aug-2021 12:07:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php:622
+Stack trace:
+#0 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(1059): SMTP->Data('Date: Mon, 23 A...')
+#1 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(881): PHPMailer->SmtpSend('Date: Mon, 23 A...', 'Test\n')
+#2 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(802): PHPMailer->PostSend()
+#3 /home/customer/www/v2.vishwavedika.net/public_html/email.php(17): PHPMailer->Send()
+#4 {main}
+  thrown in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php on line 622
+[23-Aug-2021 12:07:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php:622
+Stack trace:
+#0 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(1059): SMTP->Data('Date: Mon, 23 A...')
+#1 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(881): PHPMailer->SmtpSend('Date: Mon, 23 A...', 'Test\n')
+#2 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(802): PHPMailer->PostSend()
+#3 /home/customer/www/v2.vishwavedika.net/public_html/email.php(17): PHPMailer->Send()
+#4 {main}
+  thrown in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php on line 622
+[23-Aug-2021 12:29:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php:622
+Stack trace:
+#0 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(1059): SMTP->Data('Date: Mon, 23 A...')
+#1 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(881): PHPMailer->SmtpSend('Date: Mon, 23 A...', 'Test\n')
+#2 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(802): PHPMailer->PostSend()
+#3 /home/customer/www/v2.vishwavedika.net/public_html/email.php(16): PHPMailer->Send()
+#4 {main}
+  thrown in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php on line 622
+[23-Aug-2021 12:29:05 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php:622
+Stack trace:
+#0 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(1059): SMTP->Data('Date: Mon, 23 A...')
+#1 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(881): PHPMailer->SmtpSend('Date: Mon, 23 A...', 'Test\n')
+#2 /home/customer/www/v2.vishwavedika.net/public_html/class/class.phpmailer.php(802): PHPMailer->PostSend()
+#3 /home/customer/www/v2.vishwavedika.net/public_html/email.php(16): PHPMailer->Send()
+#4 {main}
+  thrown in /home/customer/www/v2.vishwavedika.net/public_html/class/class.smtp.php on line 622
